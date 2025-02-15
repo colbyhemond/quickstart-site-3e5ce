@@ -3,14 +3,6 @@ import { client } from "@/sanity/client";
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 
-
-// const posts = [
-//     { title: "First Post", details: "This is the first blog post.", slug: "first-post" },
-//     { title: "Second Post", details: "This is the second blog post.", slug: "second-post" },
-//     { title: "Third Post", details: "This is the third blog post.", slug: "third-post" },
-// ];
-
-
 const POSTS_QUERY = `*[
     _type == "post"
     && defined(slug.current)
@@ -33,8 +25,8 @@ const Blog = async () => {
 
 
     return (
-        <>
-            <h1 className="text-3xl font-bold mb-4">Blog</h1>
+        <main className="p-8">
+            <h1 className="text-3xl font-bold mb-4 text-center">Blog</h1>
             <div className="space-y-4">
                 {posts.map((post, index) => {
                     return ( 
@@ -52,7 +44,7 @@ const Blog = async () => {
                 
                 })}
             </div>
-        </>
+        </main>
         );
 }
 
