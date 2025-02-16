@@ -29,6 +29,9 @@ const Blog = async () => {
             <div className="prose mx-auto">
                 <h1 className="font-bold mb-4 text-center">Blog</h1>
             </div>
+
+            {!posts && <div className="flex justify-center items-center"><div>No Posts Yet...</div></div>}
+
             <div className="grid grid-cols-3 gap-4">
                 {posts.map((post, index) => {
                     return ( 
@@ -38,7 +41,6 @@ const Blog = async () => {
                             <Image src={postImageUrl(post)} alt={post.title} width="550" height="310" className="aspect-video" />
                             <div className="p-4">
                                 <div className="text-2xl font-semibold text-center">{post.title}</div>
-                                {/* <p>{post.details}</p> */}
                             </div>
                         </Link>
                     </div>
