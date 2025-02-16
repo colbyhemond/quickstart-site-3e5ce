@@ -11,10 +11,18 @@ jobs:
         with:
           fetch-depth: 0 # Ensure full history is fetched
 
-      - name: Configure Git
+      - name: Retrieve User's Git Config
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          USER_NAME=$(git config --get user.name || echo "github-actions[bot]")
+          USER_EMAIL=$(git config --get user.email || echo "github-actions[bot]@users.noreply.github.com")
+
+          echo "USER_NAME=$USER_NAME" >> $GITHUB_ENV
+          echo "USER_EMAIL=$USER_EMAIL" >> $GITHUB_ENV
+
+      - name: Configure Git with Retrieved User
+        run: |
+          git config user.name "$USER_NAME"
+          git config user.email "$USER_EMAIL"
 
       - name: Add Remote and Fetch Latest Changes
         run: |
