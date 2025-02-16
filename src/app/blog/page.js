@@ -17,7 +17,8 @@ const POSTS_QUERY = `*[
   
 
 const Blog = async () => {
-    const posts = await client.fetch(POSTS_QUERY, {}, options);
+    let posts = [];
+    posts = await client.fetch(POSTS_QUERY, {}, options);
 
     const postImageUrl = (post) => {
         return post.image ? urlFor(post.image)?.url() : null
@@ -30,7 +31,7 @@ const Blog = async () => {
                 <h1 className="font-bold mb-4 text-center">Blog</h1>
             </div>
 
-            {!posts && <div className="flex justify-center items-center"><div>No Posts Yet...</div></div>}
+            {posts.length === 0 && <div className="flex justify-center items-center"><div>No Posts Yet...</div></div>}
 
             <div className="grid grid-cols-3 gap-4">
                 {posts.map((post, index) => {
