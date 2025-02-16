@@ -25,9 +25,11 @@ const Blog = async () => {
 
 
     return (
-        <main className="p-8">
-            <h1 className="text-3xl font-bold mb-4 text-center">Blog</h1>
-            <div className="space-y-4">
+        <main className="p-8 max-w-5xl mx-auto">
+            <div className="prose mx-auto">
+                <h1 className="font-bold mb-4 text-center">Blog</h1>
+            </div>
+            <div className="grid grid-cols-3 gap-4">
                 {posts.map((post, index) => {
                     return ( 
                     <div key={post._id} className="border border-gray-200 rounded-lg">
@@ -35,7 +37,7 @@ const Blog = async () => {
                         <Link href={`/blog/${post.slug.current}`} key={post._id}>
                             <Image src={postImageUrl(post)} alt={post.title} width="550" height="310" className="aspect-video" />
                             <div className="p-4">
-                                <h2 className="text-2xl font-semibold text-center">{post.title}</h2>
+                                <div className="text-2xl font-semibold text-center">{post.title}</div>
                                 {/* <p>{post.details}</p> */}
                             </div>
                         </Link>

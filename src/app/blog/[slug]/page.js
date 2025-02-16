@@ -15,10 +15,16 @@ const urlFor = (source) =>
     ? imageUrlBuilder({ projectId, dataset }).image(source)
     : null;
 
-const options = { next: { revalidate: 30 } };
+const sanityOptions = { next: { revalidate: 30 } };
+
+const dateOptions = { 
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
 
 export default async function Post({params}) {
-    const post = await client.fetch(POST_QUERY, await params, options);
+    const post = await client.fetch(POST_QUERY, await params, sanityOptions);
     const postImageUrl = post.image
       ? urlFor(post.image)?.url()
       : null;
@@ -28,22 +34,26 @@ export default async function Post({params}) {
   
     return (
       <main className="container mx-auto min-h-screen max-w-3xl p-8 flex flex-col gap-4">
-        <Link href="/blog" className="hover:underline">
+        <Link href="/blog" className="hover:underline pb-5">
           ← Back to posts
         </Link>
-        {postImageUrl && (
-          <Image
-            src={postImageUrl}
-            alt={post.title}
-            className="aspect-video rounded-xl"
-            width="600"
-            height="420"
-          />
-        )}
-        <h1 className="text-4xl font-bold mb-8">{post.title}</h1>
-        <div className="prose">
-          <p>Published: {new Date(post.publishedAt).toLocaleDateString()}</p>
-          {Array.isArray(post.body) && <PortableText value={post.body} />}
+        
+        
+        <div className="prose mx-auto">
+          <h1 className="text-4xl font-bold mb-8 text-center">{post.title}</h1>
+          <div className="text-center">{new Intl.DateTimeFormat("en-US", dateOptions).format(new Date(post.publishedAt))}</div>
+          {postImageUrl && (
+            <Image
+              src={postImageUrl}
+              alt={post.title}
+              className="aspect-video rounded-xl mx-auto"
+              width="900"
+              height="420"
+            />
+          )}
+          <div className="mx-5">
+            {Array.isArray(post.body) && <PortableText value={post.body} />}
+          </div>
         </div>
       </main>
     );
