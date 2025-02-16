@@ -6,6 +6,10 @@ import { client } from "@/sanity/client";
 import Link from "next/link";
 import Image from "next/image";
 import ArticleReader from "@/components/ArticleReader";
+// import Refractor from 'react-refractor'
+// import js from 'refractor/lang/javascript'
+
+// Refractor.registerLanguage(js)
 
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
@@ -36,6 +40,26 @@ const blocksToText = (blocks, opts = {}) => {
       return block.children.map(child => child.text).join('')
     })
     .join('\n\n')
+}
+
+const portableTextComponents = {
+  types: {
+    code: (node) => {
+      const {language, code} = node.value
+      return (
+        <pre data-language={language}>
+          <code>{code}</code>
+        </pre>
+      )
+    },
+    image: (node) => {
+      if (projectId && dataset ) {
+        return(
+          <Image src={imageUrlBuilder({ projectId, dataset }).image(node.value).url()} width="900" height="500" alt="image"/>
+        )
+      }
+    }
+  }
 }
 
 export default async function Post({params}) {
@@ -69,7 +93,7 @@ export default async function Post({params}) {
             />
           )}
           <div className="mx-5">
-            {Array.isArray(post.body) && <PortableText value={post.body} />}
+            {Array.isArray(post.body) && <PortableText value={post.body} components={portableTextComponents} />}
           </div>
         </div>
 

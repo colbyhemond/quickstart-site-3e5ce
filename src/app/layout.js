@@ -3,7 +3,6 @@ import "./globals.css";
 import Footer from "@/components/layout/Footer";
 import FathomAnalytics from "@/components/FathomAnalytics";
 import { client } from "@/sanity/client";
-import ScrollProgress from "@/components/ScrollProgress";
 import ThemeWrapper from "@/components/layout/ThemeWrapper";
 
 export const metadata = {
@@ -27,7 +26,7 @@ export default async function RootLayout({ children }) {
       
       <body >
         <ThemeWrapper theme={theme}>
-        <ScrollProgress/>
+        
         <Navbar title='Quickstart' />
         <div className="drop-shadow flex-grow">
           <div className="">
