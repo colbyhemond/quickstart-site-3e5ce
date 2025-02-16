@@ -4,12 +4,18 @@ const HERO_QUERY = `*[_type == "homePage"][0]`;
 const options = { next: { revalidate: 30 } };
 
 const Hero = async () => {
-    const hero = await client.fetch(HERO_QUERY, {}, options);
-    hero.image = hero.image ? hero.image : 'https://guileless-pie-2e99f2.netlify.app/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu6kg40a8%2Fproduction%2F9c37b7bfbc9aa51449fa53de3befa0567aa158fd-4008x3006.jpg&w=1920&q=75';
-    hero.title = hero.title || 'Your New Site';
-    hero.subtitle = hero.subtitle || 'This is your new site. You can change this text in your settings.';
-    hero.buttonText = hero.buttonText || 'Read More';
-    hero.buttonLink = hero.buttonLink || '/blog';
+    let hero = await client.fetch(HERO_QUERY, {}, options);
+
+    if (!hero) {
+        hero = {
+            title: "Your New Site",
+            subtitle: "This is your new site. You can change this text in your settings.",
+            buttonText: "Read More",
+            buttonLink: "/blog",
+            image: "https://guileless-pie-2e99f2.netlify.app/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu6kg40a8%2Fproduction%2F9c37b7bfbc9aa51449fa53de3befa0567aa158fd-4008x3006.jpg&w=1920&q=75"
+        }
+    }
+    
 
     return (<>
         <div className="hero min-h-screen"
