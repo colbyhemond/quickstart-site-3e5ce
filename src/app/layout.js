@@ -3,6 +3,8 @@ import "./globals.css";
 import Footer from "@/components/layout/Footer";
 import FathomAnalytics from "@/components/FathomAnalytics";
 import { client } from "@/sanity/client";
+import ScrollProgress from "@/components/ScrollProgress";
+import ThemeWrapper from "@/components/layout/ThemeWrapper";
 
 export const metadata = {
   title: "Quickstart Site", //TODO - connect to sanity
@@ -20,11 +22,12 @@ export default async function RootLayout({ children }) {
   const theme = settings?.theme || "light";
 
   return (
-    <html lang="en" data-theme={theme}>
+    <html lang="en">
       <FathomAnalytics />
-      <body
-        className={`antialiased min-h-screen flex flex-col justify-between`}
-      >
+      
+      <body >
+        <ThemeWrapper theme={theme}>
+        <ScrollProgress/>
         <Navbar title='Quickstart' />
         <div className="drop-shadow flex-grow">
           <div className="">
@@ -32,6 +35,7 @@ export default async function RootLayout({ children }) {
           </div>
         </div>
         <Footer />
+        </ThemeWrapper>
       </body>
     </html>
   );
