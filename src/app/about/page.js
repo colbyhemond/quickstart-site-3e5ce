@@ -5,7 +5,25 @@ const ABOUT_QUERY = `*[_type == "aboutPage"][0]`;
 const options = { next: { revalidate: 30 } };
 
 const AboutPage = async () => {
-    const content = await client.fetch(ABOUT_QUERY, {}, options);
+    let content = await client.fetch(ABOUT_QUERY, {}, options);
+
+    if (!content) {
+        content = {
+            title: "About",
+            body: [
+                {
+                    _type: "block",
+                    children: [
+                        {
+                            _type: "span",
+                            text: "This is the about page. You can change this text in your settings.",
+                        },
+                    ],
+                },
+            ],
+        };
+    }
+
     return (<>
     <main className="container mx-auto min-h-screen max-w-3xl p-8 flex flex-col gap-4">
         <div className="prose mx-auto">
