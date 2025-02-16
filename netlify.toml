@@ -1,5 +1,5 @@
 
 [template.environemnt]
     NEXT_PUBLIC_SANITY_PROJECT_ID="Enter your sanity project ID here"
-    NEXT_PUBLIC_SANITY_DATASET="Enter your sanity dataset name "production"
+    NEXT_PUBLIC_SANITY_DATASET="Enter your sanity dataset name"
     NEXT_PUBLIC_SANITY_API_VERSION="Set the sanity api version"
