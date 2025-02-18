@@ -6,7 +6,10 @@ import { client } from "@/sanity/client";
 import ThemeWrapper from "@/components/layout/ThemeWrapper";
 
 export const metadata = {
-  title: "Quickstart Site", //TODO - connect to sanity
+  title: {
+    template: '%s | Quickstart',
+    default: 'Quickstart',
+  },
   description: "My Website", //TODO - connect to sanity
 };
 

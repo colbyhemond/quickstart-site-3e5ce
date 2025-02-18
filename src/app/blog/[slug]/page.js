@@ -11,7 +11,6 @@ import ArticleReader from "@/components/ArticleReader";
 
 // Refractor.registerLanguage(js)
 
-
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
 
 const { projectId, dataset } = client.config();
@@ -21,6 +20,22 @@ const urlFor = (source) =>
     : null;
 
 const sanityOptions = { next: { revalidate: 30 } };
+
+export const generateMetadata = async ({params, searchParams}, parent) => {
+
+  const post = await client.fetch(POST_QUERY, await params, sanityOptions);
+  return {
+    title: post.title,
+    description: post.title,
+    image: '/api/og?title=' + post.title,
+    // image: post.image
+    //   ? urlFor(post.image)
+    //       .width(1200)
+    //       .height(630)
+    //       .url()
+    //   : null,
+  };
+}
 
 const dateOptions = { 
   year: "numeric",
