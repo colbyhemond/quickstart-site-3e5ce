@@ -27,7 +27,7 @@ export const generateMetadata = async ({params, searchParams}, parent) => {
   return {
     title: post.title,
     description: post.title,
-    image: '/api/og?title=' + post.title,
+    image: 'https://guileless-pie-2e99f2.netlify.app/api/og?title=' + post.title,
     // image: post.image
     //   ? urlFor(post.image)
     //       .width(1200)
