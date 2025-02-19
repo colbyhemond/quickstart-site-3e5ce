@@ -1,9 +1,9 @@
-import Navbar from "@/components/layout/Navbar";
+import Navbar from "../components/layout/Navbar";
 import "./globals.css";
-import Footer from "@/components/layout/Footer";
-import FathomAnalytics from "@/components/FathomAnalytics";
-import { client } from "@/sanity/client";
-import ThemeWrapper from "@/components/layout/ThemeWrapper";
+import Footer from "../components/layout/Footer";
+import FathomAnalytics from "../components/FathomAnalytics";
+import { client } from "../sanity/client";
+import ThemeWrapper from "../components/layout/ThemeWrapper";
 
 export const metadata = {
   title: {
