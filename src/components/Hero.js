@@ -6,14 +6,24 @@ const options = { next: { revalidate: 30 } };
 const Hero = async () => {
     let hero = await client.fetch(HERO_QUERY, {}, options);
 
-    if (!hero) {
-        hero = {
-            title: "Your New Site",
-            subtitle: "This is your new site. You can change this text in your settings.",
-            buttonText: "Read More",
-            buttonLink: "/blog",
-            image: "https://guileless-pie-2e99f2.netlify.app/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu6kg40a8%2Fproduction%2F9c37b7bfbc9aa51449fa53de3befa0567aa158fd-4008x3006.jpg&w=1920&q=75"
-        }
+    if (!hero.image) {
+        hero.image = "https://guileless-pie-2e99f2.netlify.app/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fu6kg40a8%2Fproduction%2F9c37b7bfbc9aa51449fa53de3befa0567aa158fd-4008x3006.jpg&w=1920&q=75";
+    }
+
+    if (!hero.buttonText) {
+        hero.buttonText = "Read More";
+    }
+
+    if (!hero.buttonLink) {
+        hero.buttonLink = "/blog";
+    }
+
+    if (!hero.title) {
+        hero.title = "Your New Site";
+    }
+
+    if (!hero.subtitle) {
+        hero.subtitle = "This is your new site. You can change this text in your settings.";
     }
     
 
