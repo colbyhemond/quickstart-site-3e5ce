@@ -6,10 +6,6 @@ import { client } from "@/sanity/client";
 import Link from "next/link";
 import Image from "next/image";
 import ArticleReader from "@/components/ArticleReader";
-// import Refractor from 'react-refractor'
-// import js from 'refractor/lang/javascript'
-
-// Refractor.registerLanguage(js)
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
 
@@ -27,13 +23,18 @@ export const generateMetadata = async ({params, searchParams}, parent) => {
   return {
     title: post.title,
     description: post.title,
-    // image: 'https://guileless-pie-2e99f2.netlify.app/api/og?title=' + post.title,
-    image: post.image
-      ? urlFor(post.image)
-          .width(1200)
-          .height(630)
-          .url()
-      : null,
+    openGraph: {
+      title: post.title,
+      description: post.title,
+      url: '',
+      siteName: '',
+      type: 'article',
+      images: [{
+        url: '/api/og?title=' + post.title,
+        width: 800,
+        height: 600,
+      }]
+    },
   };
 }
 
@@ -81,10 +82,7 @@ export default async function Post({params}) {
     const post = await client.fetch(POST_QUERY, await params, sanityOptions);
     const postImageUrl = post.image
       ? urlFor(post.image)?.url()
-      : null;
-
-      console.log(postImageUrl);
-      
+      : null;      
   
     return (
       <main className="container mx-auto min-h-screen max-w-3xl p-8 flex flex-col gap-4">
