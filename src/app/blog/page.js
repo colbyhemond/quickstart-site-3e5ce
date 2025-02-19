@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { client } from "@/sanity/client";
+import { client } from "../..//sanity/client";
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 

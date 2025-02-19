@@ -1,4 +1,4 @@
-import { client } from "@/sanity/client";
+import { client } from "../sanity/client";
 
 const HERO_QUERY = `*[_type == "homePage"][0]`;
 const options = { next: { revalidate: 30 } };
