@@ -1,6 +1,8 @@
 name: Update Repository
 run-name: ${{ github.actor }} is testing updating to the latest code version 🚀
 on: workflow_dispatch
+permissions: 
+  actions: write
 jobs:
   pull-main:
     runs-on: ubuntu-latest
