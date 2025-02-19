@@ -1,5 +1,5 @@
 name: Update Repository
-run-name: ${{ github.actor }} is testing updating to the latest code version 🚀
+run-name: ${{ github.actor }} is updating to the latest code version 🚀
 on: workflow_dispatch
 permissions: write-all
 jobs:
