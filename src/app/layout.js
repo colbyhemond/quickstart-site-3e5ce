@@ -1,9 +1,11 @@
+
 import Navbar from "../components/layout/Navbar";
 import "./globals.css";
 import Footer from "../components/layout/Footer";
 import FathomAnalytics from "../components/FathomAnalytics";
 import { client } from "../sanity/client";
 import ThemeWrapper from "../components/layout/ThemeWrapper";
+import Layout from "../components/layout/Layout";
 
 export const metadata = {
   title: {
@@ -30,13 +32,9 @@ export default async function RootLayout({ children }) {
       <body >
         <ThemeWrapper theme={theme}>
         
-        <Navbar title='Quickstart' />
-        <div className="drop-shadow flex-grow">
-          <div className="">
+        <Layout>
           {children}
-          </div>
-        </div>
-        <Footer />
+        </Layout>
         </ThemeWrapper>
       </body>
     </html>

@@ -1,3 +1,8 @@
+import {CogIcon} from '@sanity/icons'
+import { HomeIcon } from '@sanity/icons'
+import {UserIcon} from '@sanity/icons'
+
+
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure = (S) =>
       S.list()
@@ -5,7 +10,7 @@ export const structure = (S) =>
         .items([
           S.listItem()
             .title('Settings')
-            .icon(() => '⚙️')
+            .icon(CogIcon)
             .child(
               S.editor()
                 .id('settings')
@@ -16,7 +21,7 @@ export const structure = (S) =>
           S.divider(),
           S.listItem()
             .title('Home Page')
-            .icon(() => '🏠')
+            .icon(HomeIcon)
             .child(
               S.editor()
                 .id('homePage')
@@ -26,7 +31,7 @@ export const structure = (S) =>
           ),
           S.listItem()
             .title('About Page')
-            .icon(() => '👤')
+            .icon(UserIcon)
             .child(
               S.editor()
                 .id('aboutPage')
