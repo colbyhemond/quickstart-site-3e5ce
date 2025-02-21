@@ -89,12 +89,14 @@ const Footer = ({socialLinks}) => {
                 <Link href="/admin" className="link link-hover">Admin</Link>
 
             </nav>
+            {socialLinksMarkup.length > 0 ? 
             <nav>
                 <div className="grid grid-flow-col gap-4">
                 
                     {socialLinksMarkup}
                 </div>
             </nav>
+            : null}
             <aside>
                 <p>Copyright © {new Date().getFullYear()}</p>
             </aside>
