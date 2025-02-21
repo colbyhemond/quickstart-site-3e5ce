@@ -24,7 +24,7 @@ export default async function RootLayout({ children }) {
   const settings = await client.fetch(SETTINGS_QUERY, {}, options);
 
   const theme = settings?.theme || "light";
-
+  
   return (
     <html lang="en">
       <FathomAnalytics />
@@ -32,7 +32,7 @@ export default async function RootLayout({ children }) {
       <body >
         <ThemeWrapper theme={theme}>
         
-        <Layout>
+        <Layout settings={settings}>
           {children}
         </Layout>
         </ThemeWrapper>

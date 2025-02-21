@@ -6,6 +6,12 @@ export const settingsType = defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'theme',
       title: 'Theme',
       type: 'string',
@@ -46,5 +52,12 @@ export const settingsType = defineType({
         ],
       },
     }),
+    defineField({
+      name: 'socialLinks',
+      title: 'Social Links',
+      type: 'array',
+      of: [{type: 'socialLink'}],
+    }),
+    
   ],
 })
