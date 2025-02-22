@@ -9,8 +9,8 @@ const Footer = ({socialLinks}) => {
             svg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg>`
         },
         {
-            name: "twitter",
-            svg: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-2.72 0-4.924 2.204-4.924 4.924 0 .386.043.762.127 1.124-4.092-.205-7.719-2.165-10.141-5.144-.424.729-.666 1.574-.666 2.476 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.247-2.228-.616v.062c0 2.388 1.698 4.384 3.95 4.835-.414.112-.849.171-1.296.171-.317 0-.626-.031-.927-.088.627 1.956 2.444 3.379 4.6 3.419-1.68 1.318-3.809 2.105-6.115 2.105-.397 0-.788-.023-1.175-.069 2.179 1.397 4.768 2.212 7.548 2.212 9.057 0 14.01-7.506 14.01-14.01 0-.213-.005-.426-.014-.637.961-.694 1.796-1.562 2.457-2.549z"></path></svg>`
+            name: "x",
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="fill-current"><path d="M23.5 2.5h-3.8L14 10.3 8.5 2.5H0l9.3 12.8L0 22h3.8l6.1-8.4 5.8 8.4h8.4l-9.7-13.3L23.5 2.5z"/></svg>`
         },
         {
             name: "instagram",
@@ -69,6 +69,14 @@ const Footer = ({socialLinks}) => {
 
     const socialLinksMarkup = socialLinks.map((link, index) => {
         console.log(link);
+
+        if (!link.link || !link.platform) {
+            return null
+        }
+
+        if (!socialIcons.find(icon => icon.name === link.platform)) {
+            return null
+        }
         
         return (
             <a key={index} href={link.link   } className="btn btn-ghost btn-circle">
@@ -81,12 +89,12 @@ const Footer = ({socialLinks}) => {
 
 
     return (<>
-        <footer className="footer footer-center bg-base-200 text-base-content rounded p-10">
+        <footer className="footer footer-center bg-base-200 text-base-content rounded p-10 pb-5">
             <nav className="grid grid-flow-col gap-4">
                 <Link href="/" className="link link-hover">Home</Link>
                 <Link href="/about" className="link link-hover">About</Link>
                 <Link href="/blog" className="link link-hover">Blog</Link>
-                <Link href="/admin" className="link link-hover">Admin</Link>
+                
 
             </nav>
             {socialLinksMarkup.length > 0 ? 
@@ -97,8 +105,9 @@ const Footer = ({socialLinks}) => {
                 </div>
             </nav>
             : null}
-            <aside>
+            <aside className="flex justify-between w-full">
                 <p>Copyright © {new Date().getFullYear()}</p>
+                <Link href="/admin" className="link link-hover">Admin</Link>
             </aside>
         </footer>
     </>)

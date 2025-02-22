@@ -12,7 +12,7 @@ export const socialLinkType = defineType({
             options: {
                 list: [
                     { title: 'Facebook', value: 'facebook' },
-                    { title: 'Twitter', value: 'twitter' },
+                    { title: 'X', value: 'x' },
                     { title: 'Instagram', value: 'instagram' },
                     { title: 'LinkedIn', value: 'linkedin' },
                     { title: 'YouTube', value: 'youtube' },

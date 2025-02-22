@@ -21,7 +21,7 @@ const Layout = ({children, settings}) => {
 
     return (<>
         <Navbar title={title} />
-        <div className="drop-shadow flex-grow">
+        <div className="drop-shadow flex-grow mt-20">
           <div className="">
           {children}
           </div>
