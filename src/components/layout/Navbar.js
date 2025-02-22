@@ -38,7 +38,7 @@ const Navbar = ({title}) => {
             </div>
             
 
-            <div className="asbolute md:hidden w-full h-full overflow-hidden flex-col top-5 shadow-xl pointer-events-auto h-20">
+            <div className=" md:hidden w-full h-full overflow-hidden flex-col top-5 shadow-xl pointer-events-auto h-20">
                 <div className="w-full p-5 text-base-content flex justify-between items-center bg-base-100">
                     <div>
                         <Link href='/' onClick={()=>{setTranslate(translateHide)}} className="btn btn-ghost text-xl">{title}</Link>
