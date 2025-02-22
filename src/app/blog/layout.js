@@ -8,7 +8,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
 
   return (<>
-    <ScrollProgress/>
+    <ScrollProgress />
     <div className="flex flex-col justify-center items-center">
         {children}
     </div>
