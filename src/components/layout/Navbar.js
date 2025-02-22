@@ -23,7 +23,7 @@ const Navbar = ({title}) => {
     }
 
     return (<>
-        <div className=" w-full shadow pointer-events-none h-0">
+        <div className=" w-full shadow pointer-events-none fixed top-0 z-50">
             <div className="hidden md:flex justify-between items-center p-5 bg-base-100">
                 <div className="hidden md:flex md:flex-1">
                     <Link href='/' className="btn btn-ghost text-xl pointer-events-auto">{title}</Link>
@@ -35,6 +35,7 @@ const Navbar = ({title}) => {
                     <li><Link href='/blog'>Blog</Link></li>
                     </ul>
                 </div>
+                
             </div>
             
 
@@ -51,6 +52,7 @@ const Navbar = ({title}) => {
                 
                 
             </div>
+            <ScrollProgress />
             <div className={`transition-all duration-700 ease-in-out flex flex-col h-screen bg-neutral bg-opacity-80 text-neutral-content text-center gap-5 p-10 sticky top-0 w-full font-bold !z-[999] ${translate} pointer-events-auto overflow-y-scroll`}>
                 <Link className="pointer-events-auto text-3xl" href='/' onClick={()=>{setTranslate(translateHide)}}>Home</Link>
                 <Link className="pointer-events-auto text-3xl" href='/about' onClick={()=>{setTranslate(translateHide)}}>About</Link>
