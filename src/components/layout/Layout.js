@@ -1,5 +1,6 @@
 'use client'
 
+import { use, useEffect } from "react"
 import Footer from "./Footer"
 import Navbar from "./Navbar"
 import { usePathname } from 'next/navigation'
@@ -8,7 +9,12 @@ import { usePathname } from 'next/navigation'
 const Layout = ({children, settings}) => {
     const pathname = usePathname()
     console.log(pathname);
-    
+
+
+    useEffect(() => {
+        document.querySelector('body').style.opacity = 1
+    }, [])
+
     // Parse pathname to determine if we are on the admin page
     const isAdminPage = pathname.startsWith('/admin')
 

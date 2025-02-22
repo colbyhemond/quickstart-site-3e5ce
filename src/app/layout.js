@@ -26,10 +26,10 @@ export default async function RootLayout({ children }) {
   const theme = settings?.theme || "light";
   
   return (
-    <html lang="en">
+    <html lang="en" className="bg-neutral">
       <FathomAnalytics />
       
-      <body >
+      <body className="bg-base-100">
         <ThemeWrapper theme={theme}>
         
         <Layout settings={settings}>

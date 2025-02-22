@@ -22,17 +22,27 @@ const Navbar = ({title}) => {
         }
     }
 
+    const transitionToPage = function(href) {
+        document.querySelector('body').style.opacity = 0.1
+        setTimeout(function() { 
+            window.location.href = href
+        }, 500)
+    }
+    
+    
+
     return (<>
         <div className=" w-full shadow pointer-events-none fixed top-0 z-50">
             <div className="hidden md:flex justify-between items-center p-5 bg-base-100">
                 <div className="hidden md:flex md:flex-1">
-                    <Link href='/' className="btn btn-ghost text-xl pointer-events-auto">{title}</Link>
+                    {/* <Link href='/' className="btn btn-ghost text-xl pointer-events-auto"></Link> */}
+                    <span onClick={()=>{transitionToPage('/')}} className="btn btn-ghost text-xl pointer-events-auto">{title}</span>
                 </div>
                 <div className="hidden md:flex mdflex-none pointer-events-auto">
                     <ul className="menu menu-horizontal px-1">
-                    <li><Link href='/'>Home</Link></li>
-                    <li><Link href='/about'>About</Link></li>
-                    <li><Link href='/blog'>Blog</Link></li>
+                    <li><span onClick={()=>{transitionToPage('/')}}>Home</span></li>
+                    <li><span onClick={()=>{transitionToPage('/about')}}>About</span></li>
+                    <li><span onClick={()=>{transitionToPage('/blog')}}>Blog</span></li>
                     </ul>
                 </div>
                 
