@@ -97,15 +97,16 @@ export default async function Post({params}) {
             <ArticleReader text={blocksToText(post.body)} />
           </div>
           {postImageUrl && (
-            <Image
-              src={postImageUrl}
-              alt={post.title}
-              className="aspect-video rounded-xl mx-auto"
-              width="900"
-              height="420"
-            />
+            <div className="relative rounded-xl w-[650px] h-[400px] mt-5">
+              <Image
+                src={postImageUrl}
+                alt={post.title}
+                fill={true}
+                className="rounded-xl object-cover"
+              />
+            </div>
           )}
-          <div className="mx-5">
+          <div className="m-5 mt-14">
             {Array.isArray(post.body) && <PortableText value={post.body} components={portableTextComponents} />}
           </div>
         </div>
