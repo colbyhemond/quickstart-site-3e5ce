@@ -5,13 +5,18 @@ import { useEffect } from "react"
 
 const ThemeWrapper = ({theme, children}) => {
 
-    // useEffect(() => {
-    //     document.querySelector('body').setAttribute('data-theme', theme)
-    //     document.querySelector('body').classList.add('bg-base-100')
-    // }, [])
+    useEffect(() => {
+        document.querySelector('#theme-wrapper').setAttribute('data-theme', theme)
+        const savedTheme = window.localStorage.getItem('theme')
+        if (savedTheme) {
+            document.querySelector('#theme-wrapper').setAttribute('data-theme', savedTheme)
+        }
+
+    }
+    , [])
 
     return (<>
-        <div data-theme={theme} className={`antialiased min-h-screen flex flex-col justify-between`}>
+        <div id='theme-wrapper' data-theme={theme} className={`antialiased min-h-screen flex flex-col justify-between`}>
             {children}
         </div>
     </>)

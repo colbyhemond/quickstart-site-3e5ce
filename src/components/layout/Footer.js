@@ -1,4 +1,5 @@
 import Link from "next/link"
+import ThemePicker from "./ThemePicker"
 
 
 const Footer = ({socialLinks}) => {
@@ -107,7 +108,10 @@ const Footer = ({socialLinks}) => {
             : null}
             <aside className="flex justify-between w-full">
                 <p>Copyright © {new Date().getFullYear()}</p>
-                <Link href="/admin" className="link link-hover">Admin</Link>
+                <div className="flex gap-4 items-center">
+                    <ThemePicker/>
+                    <Link href="/admin" className="link link-hover">Admin</Link>
+                </div>
             </aside>
         </footer>
     </>)

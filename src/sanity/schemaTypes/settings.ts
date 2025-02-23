@@ -1,4 +1,5 @@
 import {defineField, defineType} from 'sanity'
+import {ThemeList} from '../lib/themes' 
 
 export const settingsType = defineType({
   name: 'settings',
