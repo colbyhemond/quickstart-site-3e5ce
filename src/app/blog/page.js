@@ -39,7 +39,7 @@ const Blog = async () => {
                     <div key={post._id} className=" rounded-lg">
                         
                         <Link href={`/blog/${post.slug.current}`} key={post._id}>
-                            <div className="relative rounded-t-xl mx-auto h-[200px]">
+                            <div className="relative rounded-t-xl max-w-full min-w-[300px] h-[200px]">
                                 <Image src={postImageUrl(post)} alt={post.title} fill={true} className="object-cover rounded-t-xl" />
                             </div>
                             <div className="p-4 bg-base-300 rounded-b-xl ">
