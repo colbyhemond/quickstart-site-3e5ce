@@ -13,6 +13,11 @@ export const metadata = {
     default: 'Quickstart',
   },
   description: "My Website", //TODO - connect to sanity
+  alternates: {
+    types: {
+      'application/rss+xml': `https://${process.env.NEXT_PUBLIC_DOMAIN}/feed.xml`,
+    },
+  }
 };
 
 

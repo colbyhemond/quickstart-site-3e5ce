@@ -30,6 +30,10 @@ export const homeType = defineType({
         title: 'Button Link',
         type: 'string',
     }),
-    
+    defineField({
+        name: 'calltoaction',
+        title: 'Call To Action',
+        type: 'calltoaction',
+    }),
   ],
 })

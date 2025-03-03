@@ -4,9 +4,10 @@ import { ImageResponse } from 'next/og';
  
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
-    console.log(searchParams);
+    
     const title = searchParams.get('title');
-    console.log(title);
+    const website = searchParams.get('website') || '';
+    
   return new ImageResponse(
     (
       <div
@@ -20,9 +21,19 @@ export async function GET(request) {
           textAlign: 'center',
           justifyContent: 'center',
           alignItems: 'center',
+          display: 'flex',
         }}
       >
         {title}
+        <div 
+          style={{
+            position: 'absolute',
+            bottom: '30px',
+            right: '50px',
+            fontSize: 20,
+            color: 'black',
+          }}
+            >{website}</div>
       </div>
     ),
     {

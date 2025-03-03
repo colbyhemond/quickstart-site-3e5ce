@@ -1,4 +1,4 @@
-import ScrollProgress from "../../components/ScrollProgress";
+import ScrollProgress from "../../components/layout/ScrollProgress";
 
 export const metadata = {
   title: "Blog", //TODO - connect to sanity

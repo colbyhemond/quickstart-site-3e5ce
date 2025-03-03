@@ -11,7 +11,7 @@ function TrackPageView() {
   useEffect( () => {  
 
     load(process.env.NEXT_PUBLIC_FATHOM_ID, {
-      includedDomains: [process.env.NEXT_PUBLIC_FATHOM_DOMAINS],
+      includedDomains: [process.env.NEXT_PUBLIC_DOMAIN],
     });
 
   }, []);

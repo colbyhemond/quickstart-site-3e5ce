@@ -27,6 +27,10 @@ export const postType = defineType({
       type: 'image',
     }),
     defineField({
+      name: 'tags',
+      type: 'tags',
+    }),
+    defineField({
       name: 'body',
       type: 'array',
       of: [
@@ -34,6 +38,11 @@ export const postType = defineType({
         {type: 'image'},
         {type: 'code'},
       ],
+    }),
+    defineField({
+      name: 'calltoaction',
+      title: 'Call To Action',
+      type: 'calltoaction',
     }),
   ],
 })

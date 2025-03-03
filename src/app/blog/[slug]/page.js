@@ -5,9 +5,13 @@ import imageUrlBuilder from "@sanity/image-url";
 import { client } from "../../../sanity/client";
 import Link from "next/link";
 import Image from "next/image";
-import ArticleReader from "../../../components/ArticleReader";
+import ArticleReader from "../../../components/blog/ArticleReader";
+import CallToActionSection from "../../../components/calltoaction/CallToActionSection";
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
+
+const SETTINGS_QUERY = `*[_type == "settings"][0]`;
+const options = { next: { revalidate: 30 } };
 
 const { projectId, dataset } = client.config();
 const urlFor = (source) =>
@@ -20,6 +24,7 @@ const sanityOptions = { next: { revalidate: 30 } };
 export const generateMetadata = async ({params, searchParams}, parent) => {
 
   const post = await client.fetch(POST_QUERY, await params, sanityOptions);
+  const settings = await client.fetch(SETTINGS_QUERY, {}, options);
   return {
     title: post.title,
     description: post.title,
@@ -30,7 +35,7 @@ export const generateMetadata = async ({params, searchParams}, parent) => {
       siteName: '',
       type: 'article',
       images: [{
-        url: '/api/og?title=' + post.title,
+        url: `/api/og?title=${post.title}&website=${settings.title}`,
         width: 800,
         height: 600,
       }]
@@ -83,7 +88,8 @@ export default async function Post({params}) {
     const postImageUrl = post.image
       ? urlFor(post.image)?.url()
       : null;      
-  
+    console.log(post);
+    
     return (
       <main className="container mx-auto min-h-screen max-w-3xl p-8 flex flex-col gap-4">
         <Link href="/blog" className="hover:underline pb-5">
@@ -96,6 +102,7 @@ export default async function Post({params}) {
             <div className="text-center">{new Intl.DateTimeFormat("en-US", dateOptions).format(new Date(post.publishedAt))}</div>
             <ArticleReader text={blocksToText(post.body)} />
           </div>
+          
           {postImageUrl && (
             <div className="relative rounded-xl w-[650px] h-[400px] mt-5">
               <Image
@@ -110,6 +117,19 @@ export default async function Post({params}) {
             {Array.isArray(post.body) && <PortableText value={post.body} components={portableTextComponents} />}
           </div>
         </div>
+        {post.calltoaction && 
+          <CallToActionSection text={post.calltoaction.text} button={{href: post.calltoaction.buttonlink, text: post.calltoaction.buttontext}} />
+        }
+        
+        {post.tags && 
+          <div className="flex flex-wrap gap-2 mt-5">
+            {post.tags.map((tag, index) => {
+              return (
+                <div key={index} className="badge badge-primary">{tag}</div>
+              )
+            })}
+          </div>
+        }
 
       </main>
     );

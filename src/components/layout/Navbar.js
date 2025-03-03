@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Menu } from "react-feather"
 import { useState } from "react"
-import ScrollProgress from "../ScrollProgress"
+import ScrollProgress from "./ScrollProgress"
 
 const translateShow = '-translate-y-0'
 const translateHide = '-translate-y-[120vh]'
@@ -63,7 +63,7 @@ const Navbar = ({title}) => {
                 
             </div>
             <ScrollProgress />
-            <div className={`transition-all duration-700 ease-in-out flex flex-col h-screen bg-neutral bg-opacity-80 text-neutral-content text-center gap-5 p-10 sticky top-0 w-full font-bold !z-[999] ${translate} pointer-events-auto overflow-y-scroll`}>
+            <div className={`transition-all duration-700 ease-in-out flex flex-col h-screen bg-neutral bg-opacity-95 text-neutral-content text-center gap-5 p-10 sticky top-0 w-full font-bold !z-[999] ${translate} pointer-events-auto overflow-y-scroll`}>
                 <Link className="pointer-events-auto text-3xl" href='/' onClick={()=>{setTranslate(translateHide)}}>Home</Link>
                 <Link className="pointer-events-auto text-3xl" href='/about' onClick={()=>{setTranslate(translateHide)}}>About</Link>
                 <Link className="pointer-events-auto text-3xl" href='/blog' onClick={()=>{setTranslate(translateHide)}}>Blog</Link>

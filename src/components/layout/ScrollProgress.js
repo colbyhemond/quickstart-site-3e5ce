@@ -24,10 +24,12 @@ const ScrollProgress = () => {
     };
   }, []);
 
-  return (
-    <div className="bg-secondary sticky top-0 h-1 z-50 transition-all delay-0 duration-300" style={{width: `${scrollPercentage}%`}}
-    />
-  );
+  return (<>
+    <div className='sticky top-0 z-50'>
+        <div className="bg-secondary sticky top-0 h-1 z-50 transition-all delay-0 duration-300" style={{width: `${scrollPercentage}%`}}/>
+        <div className="bg-base-100 absolute top-0 h-1 z-40 transition-all delay-0 duration-300" style={{width: `100%`}}/>
+    </div>
+  </>);
 };
 
 export default ScrollProgress;

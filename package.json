@@ -19,6 +19,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-feather": "^2.0.10",
+    "rss": "^1.2.2",
     "sanity": "^3.76.1",
     "styled-components": "^6.1.15"
   },
