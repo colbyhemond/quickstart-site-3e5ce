@@ -22,10 +22,10 @@ const Home = async () => {
   console.log(homeContent);
 
   const calltoaction = {
-    text: homeContent.calltoaction.text,
+    text: homeContent.calltoaction.text || "See what else we have to say!",
     button: {
-      href: homeContent.calltoaction.buttonlink,
-      text: homeContent.calltoaction.buttontext,
+      href: homeContent.calltoaction.buttonlink || "/blog",
+      text: homeContent.calltoaction.buttontext || "Go to Blog",
     },
   };
 
