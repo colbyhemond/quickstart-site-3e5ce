@@ -28,6 +28,12 @@ export const metadata = async () => {
         content = placeholderContent
     }
 
+    if (!settings) {
+        settings = {
+            title: "Blog",
+        }
+    }
+
     return ({
     title: content.title,
     description: `Learn all about the writers behind the blog at ${settings.title}.`,
