@@ -36,6 +36,9 @@ const Home = async () => {
             },
           },
         },
+        slug: {
+          current: "/",
+        },
       }
     }
   
