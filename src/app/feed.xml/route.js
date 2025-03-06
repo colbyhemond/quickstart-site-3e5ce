@@ -14,7 +14,7 @@ const feed = new RSS({
   description: settings?.description || 'your description here', //get site description
   site_url: `https://${process.env.NEXT_PUBLIC_DOMAIN}`,
   feed_url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/feed.xml`,
-  copyright: `${new Date().getFullYear()} ${settings.title || 'your title here'}`, //get site name
+  copyright: `${new Date().getFullYear()} ${settings?.title || 'your title here'}`, //get site name
   language: 'en',
   pubDate: new Date(),
 });
