@@ -25,7 +25,7 @@ const Home = async () => {
         image: "/placeholder.png",
         publishedAt: new Date().toISOString(),
         author: {
-          name: "Author Name",
+          name: "Colby Hemond",
           image: "/colby.jpeg",
         },
         slug: {

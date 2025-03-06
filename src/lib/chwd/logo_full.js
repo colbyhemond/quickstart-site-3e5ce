@@ -21,6 +21,7 @@ const Logo = (props) => {
           d="M46.835 30.815h196.837"
           vectorEffect="non-scaling-stroke"
         />
+        <line xmlns="http://www.w3.org/2000/svg" x1="46.835" y1="30.815" x2="243.672" y2="30.815" id="Path" vectorEffect="non-scaling-stroke" strokeWidth="1" stroke="currentColor" strokeLinejoin="miter" strokeLinecap="square" strokeMiterlimit="3"/>
       </svg>
     </Link>
   )}
