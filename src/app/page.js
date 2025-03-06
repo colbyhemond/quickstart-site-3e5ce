@@ -3,26 +3,25 @@ import BlogHero from "../components/blog/BlogHero";
 import LatestPosts from "../components/blog/LatestPosts";
 import CallToActionSection from "../components/calltoaction/CallToActionSection";
 import { client } from "../sanity/client";
+import imageUrlBuilder from "@sanity/image-url";
 
-const button = {
-  href: "/blog",
-  text: "Go to Blog",
-};
 
-const calltoaction = {
-  text: "See what else we have to say!",
-  button: button,
-};
-const HOME_QUERY = `*[_type == "homePage"][0]`;
+const HOME_QUERY = `*[_type == "homePage"][0]{..., showcasePost->{..., author->}, calltoaction}`;
 const options = { next: { revalidate: 30 } };
-
+const { projectId, dataset } = client.config();
+  const urlFor = (source) =>
+    projectId && dataset
+      ? imageUrlBuilder({ projectId, dataset }).image(source)
+      : null;
     
 const Home = async () => {
   let homeContent = await client.fetch(HOME_QUERY, {}, options);
-  console.log(homeContent);
+
+  homeContent.showcasePost.image = urlFor(homeContent.showcasePost.image).url();
+  homeContent.showcasePost.author.image = urlFor(homeContent.showcasePost.author.image).url();
 
   const calltoaction = {
-    text: homeContent?.calltoaction?.text || "See what else we have to say!",
+    text: homeContent?.calltoaction?.ctatext || "See what else we have to say!",
     button: {
       href: homeContent?.calltoaction?.buttonlink || "/blog",
       text: homeContent?.calltoaction?.buttontext || "Go to Blog",
@@ -31,7 +30,7 @@ const Home = async () => {
 
   return (
     <div>
-      <BlogHero />
+      <BlogHero post={homeContent.showcasePost} />
       <LatestPosts />
       <CallToActionSection text={calltoaction.text} button={calltoaction.button}/>
     </div>

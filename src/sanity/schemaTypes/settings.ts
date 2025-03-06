@@ -12,6 +12,16 @@ export const settingsType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+    }),
+    defineField({
+      name: 'contactEmail',
+      title: 'Contact Email',
+      type: 'string',
+    }),
+    defineField({
       name: 'theme',
       title: 'Theme',
       type: 'string',

@@ -1,6 +1,7 @@
 import { aboutType } from './aboutType'
 import { callToActionType } from './callToActionType'
 import { homeType } from './homeType'
+import { personType } from './personType'
 import {postType} from './postType'
 import { settingsType } from './settings'
 import { socialLinkType } from './socialLinkType'
@@ -15,5 +16,6 @@ export const schema = [
     socialLinkType,
     callToActionType,
     tagsType,
-    tagType
+    tagType,
+    personType
 ]

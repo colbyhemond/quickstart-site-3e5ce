@@ -10,26 +10,26 @@ const POSTS_QUERY = `*[_type == "post" && defined(slug.current)]|order(published
 const posts = await client.fetch(POSTS_QUERY, {}, options);
 
 const feed = new RSS({
-    title: settings.title || 'your title here', //get site name
-    description: settings.description || 'your description here', //get site description
-    site_url: `https://${process.env.NEXT_PUBLIC_DOMAIN}`,
-    feed_url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/feed.xml`,
-    copyright: `${new Date().getFullYear()} ${settings.title || 'your title here'}`, //get site name
-    language: 'en',
-    pubDate: new Date(),
-  });
+  title: settings?.title || 'your title here', //get site name
+  description: settings?.description || 'your description here', //get site description
+  site_url: `https://${process.env.NEXT_PUBLIC_DOMAIN}`,
+  feed_url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/feed.xml`,
+  copyright: `${new Date().getFullYear()} ${settings.title || 'your title here'}`, //get site name
+  language: 'en',
+  pubDate: new Date(),
+});
 
-  posts.map((post) => {
-    feed.item({
-      title: post.title,
-      description: post.excerpt,
-      url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/blog/${post.slug.current}`,
-      guid: `https://${process.env.NEXT_PUBLIC_DOMAIN}/blog/${post.slug.current}`,
-      date: post.publishedAt,
-      author: settings.author || 'your author here', //get site author
-      categories: settings.categories || [], //get site categories
-    });
-  })
+posts.map((post) => {
+  feed.item({
+    title: post.title,
+    description: post.excerpt,
+    url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/blog/${post.slug.current}`,
+    guid: `https://${process.env.NEXT_PUBLIC_DOMAIN}/blog/${post.slug.current}`,
+    date: post.publishedAt,
+    author: post.author || 'your author here', //get site author
+    categories: post.tags || [], //get site categories
+  });
+})
 
 export async function GET() {
     return new Response(feed.xml({ indent: true }), {

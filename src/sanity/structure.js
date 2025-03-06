@@ -40,4 +40,5 @@ export const structure = (S) =>
                 .title('About Page')
           ),
           S.documentTypeListItem("post").title("Posts"),
+          S.documentTypeListItem("person").title("People"),
         ])

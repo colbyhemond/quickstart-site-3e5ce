@@ -6,7 +6,6 @@ import Social from "../socials/Social"
 const Footer = ({socialLinks}) => {
 
     const socialLinksMarkup = socialLinks.map((link, index) => {
-        console.log(link);
 
         if (!link.link || !link.platform) {
             return null
@@ -26,8 +25,10 @@ const Footer = ({socialLinks}) => {
         <footer className="footer footer-center bg-base-200 text-base-content rounded p-10 pb-5">
             <nav className="grid grid-flow-col gap-4">
                 <Link href="/" className="link link-hover">Home</Link>
-                <Link href="/about" className="link link-hover">About</Link>
                 <Link href="/blog" className="link link-hover">Blog</Link>
+                <Link href="/about" className="link link-hover">About</Link>
+                <Link href="/contact" className="link link-hover">Contact</Link>
+                
                 
 
             </nav>
@@ -40,8 +41,8 @@ const Footer = ({socialLinks}) => {
             </nav>
             : null}
             <aside className="flex flex-col md:flex-row md:flex-wrap justify-between items-end w-full gap-4">
-                <p className="pt-4 order-10 mx-auto md:mx- lg:order-1">Copyright © {new Date().getFullYear()}</p>
-                <div className="flex  items-end gap-4 order-12 md:order-5">
+                <p className="pt-4 order-10 mx-auto md:mx-0 lg:order-1">Copyright © {new Date().getFullYear()}</p>
+                <div className="flex  items-end gap-4 order-12 md:order-5 mx-auto">
           
                     <div>Brought to you by:</div>
                     <div>
@@ -49,7 +50,7 @@ const Footer = ({socialLinks}) => {
                     </div>
                         
                 </div>
-                <div className="flex gap-4 items-center order-8 mx-auto">
+                <div className="flex gap-4 items-center order-8 mx-auto md:mx-0">
                     <ThemePicker/>
                     <Link href="/admin" className="link link-hover">Admin</Link>
                 </div>

@@ -8,8 +8,6 @@ import { usePathname } from 'next/navigation'
 
 const Layout = ({children, settings}) => {
     const pathname = usePathname()
-    console.log(pathname);
-
 
     useEffect(() => {
         document.querySelector('body').style.opacity = 1

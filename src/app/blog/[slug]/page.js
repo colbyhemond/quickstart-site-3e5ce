@@ -7,8 +7,9 @@ import Link from "next/link";
 import Image from "next/image";
 import ArticleReader from "../../../components/blog/ArticleReader";
 import CallToActionSection from "../../../components/calltoaction/CallToActionSection";
+import Author from "../../../components/blog/Author";
 
-const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
+const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{..., author->}`;
 
 const SETTINGS_QUERY = `*[_type == "settings"][0]`;
 const options = { next: { revalidate: 30 } };
@@ -27,10 +28,10 @@ export const generateMetadata = async ({params, searchParams}, parent) => {
   const settings = await client.fetch(SETTINGS_QUERY, {}, options);
   return {
     title: post.title,
-    description: post.title,
+    description: post.excerpt,
     openGraph: {
       title: post.title,
-      description: post.title,
+      description: post.excerpt,
       url: '',
       siteName: '',
       type: 'article',
@@ -88,7 +89,8 @@ export default async function Post({params}) {
     const postImageUrl = post.image
       ? urlFor(post.image)?.url()
       : null;      
-    console.log(post);
+
+    post.author.image = urlFor(post.author.image).url();
     
     return (
       <main className="container mx-auto min-h-screen max-w-3xl p-8 flex flex-col gap-4">
@@ -98,13 +100,14 @@ export default async function Post({params}) {
         
         <div className="prose mx-auto">
           <h1 className="text-4xl font-bold mb-8 text-center">{post.title}</h1>
-          <div className="flex justify-center gap-5">
+          <div className="flex flex-wrap justify-center items-center gap-5">
+            <Author author={post.author}/>
             <div className="text-center">{new Intl.DateTimeFormat("en-US", dateOptions).format(new Date(post.publishedAt))}</div>
             <ArticleReader text={blocksToText(post.body)} />
           </div>
           
           {postImageUrl && (
-            <div className="relative rounded-xl w-[650px] h-[400px] mt-5">
+            <div className="relative rounded-xl w-[425px] h-[250px] md:w-[650px] md:h-[400px] mt-5 mx-auto">
               <Image
                 src={postImageUrl}
                 alt={post.title}
@@ -122,7 +125,7 @@ export default async function Post({params}) {
         }
         
         {post.tags && 
-          <div className="flex flex-wrap gap-2 mt-5">
+          <div className="flex flex-wrap justify-center gap-2 mt-5">
             {post.tags.map((tag, index) => {
               return (
                 <div key={index} className="badge badge-primary">{tag}</div>

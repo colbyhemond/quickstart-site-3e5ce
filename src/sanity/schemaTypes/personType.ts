@@ -16,14 +16,19 @@ export const personType = defineType({
       type: 'string',
     }),
     defineField({
-        name: 'image',
-        title: 'Image',
-        type: 'string',
+      name: 'image',
+      type: 'image',
     }),
     defineField({
         name: 'summary',
         title: 'Summary',
-        type: 'string',
+        type: 'text',
+    }),
+    defineField({
+      name: 'socialLinks',
+      title: 'Social Links',
+      type: 'array',
+      of: [{type: 'socialLink'}],
     }),
     
   ],

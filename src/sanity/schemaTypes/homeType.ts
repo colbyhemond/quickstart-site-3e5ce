@@ -6,29 +6,10 @@ export const homeType = defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
-      type: 'string'
-    }),
-    defineField({
-      name: 'subtitle',
-      title: 'Sub Title',
-      type: 'string',
-    }),
-    defineField({
-        name: 'image',
-        title: 'Image',
-        type: 'string',
-    }),
-    defineField({
-        name: 'buttonText',
-        title: 'Button Text',
-        type: 'string',
-    }),
-    defineField({
-        name: 'buttonLink',
-        title: 'Button Link',
-        type: 'string',
+      name: 'showcasePost',
+      title: 'Showcase Post',
+      type: 'reference',
+      to: [{type: 'post'}],
     }),
     defineField({
         name: 'calltoaction',

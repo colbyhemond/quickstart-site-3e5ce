@@ -2,26 +2,43 @@ import { PortableText } from "next-sanity"
 import { client } from "../../sanity/client";
 
 const ABOUT_QUERY = `*[_type == "aboutPage"][0]`;
+const SETTINGS_QUERY = `*[_type == "settings"][0]`;
 const options = { next: { revalidate: 30 } };
+
+const placeholderContent = {
+    title: "About",
+    body: [
+        {
+            _type: "block",
+            children: [
+                {
+                    _type: "span",
+                    text: "This is the about page. You can change this text in your settings.",
+                },
+            ],
+        },
+    ],
+};
+
+export const metadata = async () => {
+    let content = await client.fetch(ABOUT_QUERY, {}, options);
+    let settings = await client.fetch(SETTINGS_QUERY, {}, options);
+
+    if (!content) {
+        content = placeholderContent
+    }
+
+    return ({
+    title: content.title,
+    description: `Learn all about the writers behind the blog at ${settings.title}.`,
+  });
+}
 
 const AboutPage = async () => {
     let content = await client.fetch(ABOUT_QUERY, {}, options);
 
     if (!content) {
-        content = {
-            title: "About",
-            body: [
-                {
-                    _type: "block",
-                    children: [
-                        {
-                            _type: "span",
-                            text: "This is the about page. You can change this text in your settings.",
-                        },
-                    ],
-                },
-            ],
-        };
+        content = placeholderContent
     }
 
     return (<>
