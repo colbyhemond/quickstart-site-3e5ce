@@ -17,8 +17,23 @@ const { projectId, dataset } = client.config();
 const Home = async () => {
   let homeContent = await client.fetch(HOME_QUERY, {}, options);
 
-  homeContent.showcasePost.image = urlFor(homeContent.showcasePost.image).url();
-  homeContent.showcasePost.author.image = urlFor(homeContent.showcasePost.author.image).url();
+  if (!homeContent) {
+    homeContent = {
+      showcasePost: {
+        title: "Welcome to our blog!",
+        excerpt: "This is the first post on our blog. Check back soon for more!",
+        image: {
+          asset: {
+            url: "/placeholder.png",
+          },
+        },
+      }
+    }
+  
+  } else {
+    homeContent.showcasePost.image = urlFor(homeContent.showcasePost.image).url();
+    homeContent.showcasePost.author.image = urlFor(homeContent.showcasePost.author.image).url();
+  }
 
   const calltoaction = {
     text: homeContent?.calltoaction?.ctatext || "See what else we have to say!",
