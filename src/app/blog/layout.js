@@ -14,7 +14,7 @@ export const metadata = async () => {
       template: `%s | Blog`,
       default: `Blog`,
     },
-    description: `Discover what they are writing about in the blog at ${settings.title}.`,
+    description: `Discover what they are writing about in the blog at ${settings?.title || "Blog"}.`,
   });
 }
 
