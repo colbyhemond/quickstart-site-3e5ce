@@ -27,6 +27,15 @@ const Home = async () => {
             url: "/placeholder.png",
           },
         },
+        publishedAt: new Date().toISOString(),
+        author: {
+          name: "Author Name",
+          image: {
+            asset: {
+              url: "/placeholder.png",
+            },
+          },
+        },
       }
     }
   
