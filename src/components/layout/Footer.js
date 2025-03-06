@@ -27,7 +27,7 @@ const Footer = ({socialLinks}) => {
                 <Link href="/" className="link link-hover">Home</Link>
                 <Link href="/blog" className="link link-hover">Blog</Link>
                 <Link href="/about" className="link link-hover">About</Link>
-                <Link href="/contact" className="link link-hover">Contact</Link>
+                {/* <Link href="/contact" className="link link-hover">Contact</Link> */}
                 
                 
 

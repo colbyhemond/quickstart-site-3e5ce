@@ -20,21 +20,13 @@ const Home = async () => {
   if (!homeContent) {
     homeContent = {
       showcasePost: {
-        title: "Welcome to our blog!",
-        excerpt: "This is the first post on our blog. Check back soon for more!",
-        image: {
-          asset: {
-            url: "/placeholder.png",
-          },
-        },
+        title: "Welcome to your blog!",
+        excerpt: "Don't worry, this is just some placeholder content. It will all be replaced with your own content once you start adding posts. I hope you enjoy your new blog!",
+        image: "/placeholder.png",
         publishedAt: new Date().toISOString(),
         author: {
           name: "Author Name",
-          image: {
-            asset: {
-              url: "/placeholder.png",
-            },
-          },
+          image: "/colby.jpeg",
         },
         slug: {
           current: "/",
