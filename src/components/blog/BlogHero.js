@@ -27,7 +27,7 @@ import Author from "./Author";
                 </div>
                 <div className="card bg-base-100 w-full max-w-xl shrink-0 shadow-2xl rounded-xl h-auto lg:h-[450px]">
                     <div className="card-body ">
-                        <h2 className="card-title text-5xl">{post.title}</h2>
+                        <h1 className="card-title text-5xl">{post.title}</h1>
                         <p className="">{post.excerpt}</p>
                         <div className="flex justify-between items-center gap-4 w-full">
                           <div>{new Intl.DateTimeFormat("en-US", dateOptions).format(new Date(post.publishedAt))}</div>
@@ -36,7 +36,7 @@ import Author from "./Author";
                         <Link 
                           href={`/blog/${post.slug.current}`} 
                           className="btn btn-primary my-4"
-                          aria-label={`Readt the full article on ${post.title}`}
+                          aria-label={`Read the full article on ${post.title}`}
                         >Read Article</Link>
                     </div>
                 </div>

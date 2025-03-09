@@ -21,13 +21,6 @@ const Navbar = ({title}) => {
         setTranslate(translateHide)
         }
     }
-
-    const transitionToPage = function(href) {
-        document.querySelector('body').style.opacity = 0.1
-        setTimeout(function() { 
-            window.location.href = href
-        }, 500)
-    }
     
     
 
@@ -36,14 +29,14 @@ const Navbar = ({title}) => {
             <div className="hidden md:flex justify-between items-center p-5 bg-base-100">
                 <div className="hidden md:flex md:flex-1">
                     {/* <Link href='/' className="btn btn-ghost text-xl pointer-events-auto"></Link> */}
-                    <Link href="/" onClick={()=>{transitionToPage('/')}} className="btn btn-ghost text-xl pointer-events-auto">{title}</Link>
+                    <Link href="/" className="btn btn-ghost text-xl pointer-events-auto">{title}</Link>
                 </div>
                 <div className="hidden md:flex mdflex-none pointer-events-auto">
-                    <ul className="menu menu-horizontal px-1">
-                    <li><span onClick={()=>{transitionToPage('/')}}>Home</span></li>
-                    <li><span onClick={()=>{transitionToPage('/blog')}}>Blog</span></li>
-                    <li><span onClick={()=>{transitionToPage('/about')}}>About</span></li>
-                    {/* <li><span onClick={()=>{transitionToPage('/contact')}}>Contact</span></li> */}
+                    <ul className="menu menu-horizontal px-1 gap-4">
+                        <Link href="/" className="btn btn-ghost pointer-events-auto">Home</Link>
+                        <Link href="/blog" className="btn btn-ghost pointer-events-auto">Blog</Link>
+                        <Link href="/about" className="btn btn-ghost pointer-events-auto">About</Link>
+                        {/* <Link href="/contact">Contact</Link> */}
                     </ul>
                 </div>
                 
