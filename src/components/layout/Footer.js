@@ -12,7 +12,7 @@ const Footer = ({socialLinks}) => {
         }
         
         return (
-            <a key={index} href={link.link   } className="btn btn-ghost btn-circle">
+            <a key={index} href={link.link} aria-label={`Go to our social media profile at ${link.platform} `} className="btn btn-ghost btn-circle">
                 
                 <Social name={link.platform}/>
             </a>
