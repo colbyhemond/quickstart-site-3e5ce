@@ -8,7 +8,7 @@ const BlogCard = ({post}) => {
                 <figure>
                     <img
                     src={post.imageUrl}
-                    alt=""/>
+                    alt={post.image.alt}/>
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title text-2xl font-bold text-center mx-auto">{post.title}</h2>

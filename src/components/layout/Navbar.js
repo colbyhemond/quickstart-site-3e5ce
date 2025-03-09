@@ -36,7 +36,7 @@ const Navbar = ({title}) => {
             <div className="hidden md:flex justify-between items-center p-5 bg-base-100">
                 <div className="hidden md:flex md:flex-1">
                     {/* <Link href='/' className="btn btn-ghost text-xl pointer-events-auto"></Link> */}
-                    <span onClick={()=>{transitionToPage('/')}} className="btn btn-ghost text-xl pointer-events-auto">{title}</span>
+                    <Link href="/" onClick={()=>{transitionToPage('/')}} className="btn btn-ghost text-xl pointer-events-auto">{title}</Link>
                 </div>
                 <div className="hidden md:flex mdflex-none pointer-events-auto">
                     <ul className="menu menu-horizontal px-1">

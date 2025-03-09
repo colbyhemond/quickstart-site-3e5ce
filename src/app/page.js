@@ -22,7 +22,10 @@ const Home = async () => {
       showcasePost: {
         title: "Welcome to your blog!",
         excerpt: "Don't worry, this is just some placeholder content. It will all be replaced with your own content once you start adding posts. I hope you enjoy your new blog!",
-        image: "/placeholder.png",
+        image: {
+          url: "/placeholder.png",
+          alt: "Placeholder image",
+        },
         publishedAt: new Date().toISOString(),
         author: {
           name: "Colby Hemond",
@@ -35,7 +38,7 @@ const Home = async () => {
     }
   
   } else {
-    homeContent.showcasePost.image = urlFor(homeContent.showcasePost.image).url();
+    homeContent.showcasePost.image.url = urlFor(homeContent.showcasePost.image).url();
     homeContent.showcasePost.author.image = urlFor(homeContent.showcasePost.author.image).url();
   }
 

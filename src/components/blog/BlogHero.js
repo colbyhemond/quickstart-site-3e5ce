@@ -4,7 +4,8 @@ import Author from "./Author";
 
 
  const BlogHero = async ({post}) => {
-
+  console.log(post);
+  
 
     const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
 
@@ -16,8 +17,8 @@ import Author from "./Author";
                 {post.image && (
                   <div className="relative rounded-xl min-w-[350px] h-[200px] md:min-w-[575px] md:h-[300px] lg:w-[750px] lg:h-[450px]">
                     <Image
-                      src={post.image}
-                      alt={post.title}
+                      src={post.image.url}
+                      alt={post.image.alt}
                       fill={true}
                       className="rounded-xl object-cover"
                     />
