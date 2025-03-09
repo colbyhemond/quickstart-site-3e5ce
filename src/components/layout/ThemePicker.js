@@ -72,7 +72,7 @@ const ThemePicker = () => {
 
 
     return (<>
-        <select className="select select-bordered select-sm" value={currentTheme} onChange={(e) => handleThemeChange(e.target.value)}>
+        <select aria-label="Theme" className="select select-bordered select-sm" value={currentTheme} onChange={(e) => handleThemeChange(e.target.value)}>
             <option disabled>Theme Preview</option>
             {themes.map((theme, index) => {
                 return <option key={index} value={theme.value}>{theme.title}</option>

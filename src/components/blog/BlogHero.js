@@ -32,7 +32,11 @@ import Author from "./Author";
                           <div>{new Intl.DateTimeFormat("en-US", dateOptions).format(new Date(post.publishedAt))}</div>
                           <Author author={post.author}/>
                         </div>
-                        <Link href={`/blog/${post.slug.current}`} className="btn btn-primary my-4">Read Article</Link>
+                        <Link 
+                          href={`/blog/${post.slug.current}`} 
+                          className="btn btn-primary my-4"
+                          aria-label={`Readt the full article on ${post.title}`}
+                        >Read Article</Link>
                     </div>
                 </div>
             </div>

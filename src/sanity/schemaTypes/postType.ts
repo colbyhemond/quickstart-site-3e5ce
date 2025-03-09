@@ -31,6 +31,14 @@ export const postType = defineType({
     defineField({
       name: 'image',
       type: 'image',
+      fields: [
+        defineField({
+          name: 'alt',
+          type: 'string',
+          description: 'Describe the image in a few words. Improves SEO, AIO, and A11y.',
+          validation: (rule) => rule.required(),
+        }),
+      ],
     }),
     defineField({
       name: 'tags',
