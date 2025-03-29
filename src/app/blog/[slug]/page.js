@@ -98,7 +98,7 @@ export default async function Post({params}) {
           ← Back to posts
         </Link>
         
-        <div className="prose mx-auto">
+        <article className="prose mx-auto">
           <h1 className="text-4xl font-bold mb-8 text-center">{post.title}</h1>
           <div className="flex flex-wrap justify-center items-center gap-5">
             <Author author={post.author}/>
@@ -119,7 +119,7 @@ export default async function Post({params}) {
           <div className="m-5 mt-14">
             {Array.isArray(post.body) && <PortableText value={post.body} components={portableTextComponents} />}
           </div>
-        </div>
+        </article>
         {post.calltoaction && 
           <CallToActionSection text={post.calltoaction.text} button={{href: post.calltoaction.buttonlink, text: post.calltoaction.buttontext}} />
         }

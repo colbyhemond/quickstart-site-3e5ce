@@ -25,8 +25,8 @@ const Footer = ({socialLinks}) => {
         <footer className="footer footer-center bg-base-200 text-base-content rounded p-10 pb-5">
             <nav className="grid grid-flow-col gap-4">
                 <Link href="/" className="link link-hover">Home</Link>
-                <Link href="/blog" className="link link-hover">Blog</Link>
                 <Link href="/about" className="link link-hover">About</Link>
+                <Link href="/blog" className="link link-hover">Blog</Link>
                 {/* <Link href="/contact" className="link link-hover">Contact</Link> */}
                 
                 

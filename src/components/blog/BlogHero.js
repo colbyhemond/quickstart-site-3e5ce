@@ -3,9 +3,7 @@ import Link from "next/link";
 import Author from "./Author";
 
 
- const BlogHero = async ({post}) => {
-  console.log(post);
-  
+ const BlogHero = async ({post}) => { 
 
     const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
 
